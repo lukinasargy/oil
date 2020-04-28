@@ -146,15 +146,19 @@
 						<div id="countdown" class="countdown">
 							<p>Bis zum ende der aktion</p>
 							<div class="countdown-value">
-								<span id="hours" class="countdown-hours">&nbsp;&nbsp;</span>
+								<span id="days" class="countdown-days">&nbsp;&nbsp;</span><span class="countdown-time">&nbsp;d</span>
 							</div>
 							<span class="countdown-between"> : </span>
 							<div class="countdown-value">
-								<span id="minutes" clas="countdown-minutes">&nbsp;&nbsp;</span>
+								<span id="hours" class="countdown-hours">&nbsp;&nbsp;</span><span class="countdown-time">&nbsp;h</span>
 							</div>
 							<span class="countdown-between"> : </span>
 							<div class="countdown-value">
-								<span id="seconds" clas="countdown-seconds">&nbsp;&nbsp;</span>
+								<span id="minutes" clas="countdown-minutes">&nbsp;&nbsp;</span><span class="countdown-time">&nbsp;min</span>
+							</div>
+							<span class="countdown-between"> : </span>
+							<div class="countdown-value">
+								<span id="seconds" clas="countdown-seconds">&nbsp;&nbsp;</span><span class="countdown-time">&nbsp;s</span>
 							</div>
 						</div>
 						<input class="order-input" type="text" name="name" placeholder="Name" required />
@@ -367,8 +371,8 @@
 
 		function setTimes() {
     // Set the date we're counting down to
-
-    var countDownDate = new Date().getTime() + 86400000 - Math.floor(Math.random() * 18000000) ;
+			let nowDate = new Date();
+		var countDownDate = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate()+1).getTime() + Math.floor(Math.random() * 86400000); //завтрашний день + рандом от 0 до 24 часов
 
     // Update the count down every 1 second
     var x = setInterval(function () {
@@ -386,6 +390,7 @@
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       // Display the result in the element with id="demo"
+      document.getElementById("days").innerHTML = days ;
       document.getElementById("hours").innerHTML = hours ;
       document.getElementById("minutes").innerHTML = minutes ;
       document.getElementById("seconds").innerHTML = seconds;
